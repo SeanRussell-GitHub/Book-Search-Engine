@@ -1,0 +1,18 @@
+[
+    {
+        "bookText": "On The Road",
+        "bookAuthor": "Jack Kerouac"
+    },
+    {
+        "bookText": "Howl",
+        "bookAuthor": "Allen Ginsberg"
+    },
+    {
+        "bookText": "The Metamorphosis",
+        "bookAuthor": "Franz Kafka"
+    },
+    {
+        "bookText": "Apache Kafka 1.0",
+        "bookAuthor": "Raul Estrada"
+    }
+]
