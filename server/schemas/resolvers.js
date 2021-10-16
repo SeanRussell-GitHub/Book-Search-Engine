@@ -49,21 +49,14 @@ const resolvers = {
 
       return { token, user };
     },
-    // TODO: bookText should have the fields you will use on line 56
-    addBook: async (parent, { bookText }, context) => {
+    saveBook: async (parent, bookData, context) => {
       if (context.user) {
-        // TODO: provide info needed to create a new book (check out Book.js Model for fields to add)
-        const book = await Book.create({
-          bookText,
-          bookAuthor: context.user.username,
-        });
-
-        await User.findOneAndUpdate(
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { books: book._id } }
+          { $push: { savedBooks: bookData } }
         );
 
-        return book;
+        return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

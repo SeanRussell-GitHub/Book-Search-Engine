@@ -28,6 +28,7 @@ export const ADD_USER = gql`
             link
             title
             description
+            bookText
         }
       }
       token
@@ -35,26 +36,23 @@ export const ADD_USER = gql`
   }
 `;
 
-
-
-// TODO refactor to allow mutation to take all the needed book info (not some field called input)
+// TODO refactor to allow mutation to take all the needed book info (not some field called input) ---- input renamed bookShelf **
 export const SAVE_BOOK = gql`
-  mutation saveBook($input: savedBook!){
-    addBook(input: $input)
-      {
-        _id
-        username
-        email
-        bookCountsavedBooks {
-            bookId
-            authors
-            image
-            link
-            title
-            description
+  mutation saveBook($BookData: InputBook){
+    saveBook(BookData: $BookData) {
+      _id
+      username
+      email
+        savedBooks {
+          bookId
+          authors
+          image
+          description
+          title
+          link
         }
-      }
     }
+  }
 `;
 
 
