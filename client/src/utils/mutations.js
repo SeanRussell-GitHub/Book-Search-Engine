@@ -38,8 +38,8 @@ export const ADD_USER = gql`
 
 // TODO refactor to allow mutation to take all the needed book info (not some field called input) ---- input renamed bookShelf **
 export const SAVE_BOOK = gql`
-  mutation saveBook($BookData: InputBook){
-    saveBook(BookData: $BookData) {
+  mutation saveBook($bookData: InputBook){
+    saveBook(bookData: $bookData) {
       _id
       username
       email
