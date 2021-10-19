@@ -1,31 +1,31 @@
-const db = require('../config/connection');
-const { User, Book } = require('../models');
-const bookSeeds = require('./bookSeeds.json');
-const userSeeds = require('./userSeeds.json');
+// const db = require('../config/connection');
+// const { User, Book } = require('../models');
+// const bookSeeds = require('./bookSeeds.json');
+// const userSeeds = require('./userSeeds.json');
 
-db.once('open', async () => {
-  try {
-    // await Book.deleteMany({});
-    // await User.deleteMany({});
+// db.once('open', async () => {
+//   try {
+//     // await Book.deleteMany({});
+//     // await User.deleteMany({});
 
-    await User.create(userSeeds);
+//     await User.create(userSeeds);
 
-    for (let i = 0; i < bookSeeds.length; i++) {
-      const { _id, bookAuthor } = await Book.create(bookSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { username: bookAuthor },
-        {
-          $addToSet: {
-            books: _id,
-          },
-        }
-      );
-    }
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
+//     for (let i = 0; i < bookSeeds.length; i++) {
+//       const { _id, bookAuthor } = await Book.create(bookSeeds[i]);
+//       const user = await User.findOneAndUpdate(
+//         { username: bookAuthor },
+//         {
+//           $addToSet: {
+//             books: _id,
+//           },
+//         }
+//       );
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
 
-  console.log('all done!');
-  process.exit(0);
-});
+//   console.log('all done!');
+//   process.exit(0);
+// });
